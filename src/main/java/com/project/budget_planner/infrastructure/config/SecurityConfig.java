@@ -37,8 +37,8 @@ public class SecurityConfig {
     };
 
     private static final String[] PUBLIC_POST_APIS = {
-        "/signup",
-        "/login"
+        "/users/signup",
+        "/users/login"
     };
 
     private static final String[] PUBLIC_GET_APIS = {
