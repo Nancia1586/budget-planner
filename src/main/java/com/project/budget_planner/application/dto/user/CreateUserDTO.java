@@ -1,6 +1,6 @@
 package com.project.budget_planner.application.dto.user;
 
-public class CreateUserDTO {
+public class CreateUserDto {
     private String name;
     private String firstname;
     private String username;
@@ -8,9 +8,9 @@ public class CreateUserDTO {
     private String password;
     private String confirmPassword;
 
-    public CreateUserDTO() {}
+    public CreateUserDto() {}
 
-    public CreateUserDTO(String name, String firstname, String username, String email, String password, String confirmPassword) {
+    public CreateUserDto(String name, String firstname, String username, String email, String password, String confirmPassword) {
         this.name = name;
         this.firstname = firstname;
         this.username = username;
