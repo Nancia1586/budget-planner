@@ -7,8 +7,9 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.project.budget_planner.application.dto.user.CreateUserDTO;
-import com.project.budget_planner.application.dto.user.UserDTO;
+import com.project.budget_planner.application.dto.user.CreateUserDto;
+import com.project.budget_planner.application.dto.user.LoginUserDto;
+import com.project.budget_planner.application.dto.user.UserDto;
 import com.project.budget_planner.domain.model.User;
 import com.project.budget_planner.domain.service.UserService;
 
@@ -20,20 +21,7 @@ public class UserApplicationService {
         this.userService = userService;
     }
 
-    public List<UserDTO> getAllUsers() {
-        return userService.getAllUsers().stream()
-            .map(user -> new UserDTO(user.getId(), user.getName(), user.getFirstname(), 
-                user.getUsername(), user.getEmail(), user.getPassword()))
-            .collect(Collectors.toList());
-    }
-
-    public Optional<UserDTO> getUserByUsername(String username) {
-        return userService.getUserByUsername(username)
-            .map(user -> new UserDTO(user.getId(), user.getName(), user.getFirstname(), 
-                user.getUsername(), user.getEmail(), user.getPassword()));
-    }
-
-    public UserDTO createUser(CreateUserDTO userDTO) {
+    public UserDto createUser(CreateUserDto userDTO) {
         if(!userDTO.getPassword().equals(userDTO.getConfirmPassword())){
             throw new IllegalArgumentException("Password and confirm password do not match");
         }
@@ -45,9 +33,29 @@ public class UserApplicationService {
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
 
-        User createdUser = userService.createUser(user);
-        return new UserDTO(createdUser.getId(), createdUser.getName(), 
-            createdUser.getFirstname(), createdUser.getUsername(), createdUser.getEmail(), createdUser.getPassword());
+        User createdUser = userService.creatUser(user);
+        return new UserDto(createdUser.getId(), createdUser.getName(), 
+            createdUser.getFirstname(), createdUser.getUsername(), createdUser.getEmail(), 
+            createdUser.getPassword());
+    }
+
+    public User signin(LoginUserDto loginInfo) {
+        User user = userService.signin(loginInfo.getEmail(), loginInfo.getPassword());
+        return new User(user.getId(), user.getName(), user.getFirstname(), user.getUsername(), 
+            user.getEmail(), user.getPassword());
+    }
+
+    public List<UserDto> getAllUsers() {
+        return userService.getAllUsers().stream()
+            .map(user -> new UserDto(user.getId(), user.getName(), user.getFirstname(), 
+                user.getUsername(), user.getEmail(), user.getPassword()))
+            .collect(Collectors.toList());
+    }
+
+    public Optional<UserDto> getUserByUsername(String username) {
+        return userService.getUserByUsername(username)
+            .map(user -> new UserDto(user.getId(), user.getName(), user.getFirstname(), 
+                user.getUsername(), user.getEmail(), user.getPassword()));
     }
 
     public void deleteUser(UUID id) {
