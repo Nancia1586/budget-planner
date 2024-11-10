@@ -29,33 +29,33 @@ public class UserApplicationService {
         User user = new User();
         user.setName(userDTO.getName());
         user.setFirstname(userDTO.getFirstname());
-        user.setUsername(userDTO.getUsername());
+        user.setPseudo(userDTO.getPseudo());
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
 
         User createdUser = userService.creatUser(user);
         return new UserDto(createdUser.getId(), createdUser.getName(), 
-            createdUser.getFirstname(), createdUser.getUsername(), createdUser.getEmail(), 
+            createdUser.getFirstname(), createdUser.getPseudo(), createdUser.getEmail(), 
             createdUser.getPassword());
     }
 
     public User signin(LoginUserDto loginInfo) {
         User user = userService.signin(loginInfo.getEmail(), loginInfo.getPassword());
-        return new User(user.getId(), user.getName(), user.getFirstname(), user.getUsername(), 
+        return new User(user.getId(), user.getName(), user.getFirstname(), user.getPseudo(), 
             user.getEmail(), user.getPassword());
     }
 
     public List<UserDto> getAllUsers() {
         return userService.getAllUsers().stream()
             .map(user -> new UserDto(user.getId(), user.getName(), user.getFirstname(), 
-                user.getUsername(), user.getEmail(), user.getPassword()))
+                user.getPseudo(), user.getEmail(), user.getPassword()))
             .collect(Collectors.toList());
     }
 
-    public Optional<UserDto> getUserByUsername(String username) {
-        return userService.getUserByUsername(username)
+    public Optional<UserDto> getUserByPseudo(String username) {
+        return userService.getUserByPseudo(username)
             .map(user -> new UserDto(user.getId(), user.getName(), user.getFirstname(), 
-                user.getUsername(), user.getEmail(), user.getPassword()));
+                user.getPseudo(), user.getEmail(), user.getPassword()));
     }
 
     public void deleteUser(UUID id) {

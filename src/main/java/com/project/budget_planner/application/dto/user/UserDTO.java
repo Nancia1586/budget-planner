@@ -6,17 +6,17 @@ public class UserDto {
     private UUID id;
     private String name;
     private String firstname;
-    private String username;
+    private String pseudo;
     private String email;
     private String password;
 
     public UserDto() {}
 
-    public UserDto(UUID id, String name, String firstname, String username, String email, String password) {
+    public UserDto(UUID id, String name, String firstname, String pseudo, String email, String password) {
         this.id = id;
         this.name = name;
         this.firstname = firstname;
-        this.username = username;
+        this.pseudo = pseudo;
         this.email = email;
         this.password = password;
     }
@@ -45,12 +45,12 @@ public class UserDto {
         this.firstname = firstname;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPseudo() {
+        return pseudo;
     }    
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 
     public String getEmail() {

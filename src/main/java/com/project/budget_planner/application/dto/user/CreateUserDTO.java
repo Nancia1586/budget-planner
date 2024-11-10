@@ -3,17 +3,17 @@ package com.project.budget_planner.application.dto.user;
 public class CreateUserDto {
     private String name;
     private String firstname;
-    private String username;
+    private String pseudo;
     private String email;
     private String password;
     private String confirmPassword;
 
     public CreateUserDto() {}
 
-    public CreateUserDto(String name, String firstname, String username, String email, String password, String confirmPassword) {
+    public CreateUserDto(String name, String firstname, String pseudo, String email, String password, String confirmPassword) {
         this.name = name;
         this.firstname = firstname;
-        this.username = username;
+        this.pseudo = pseudo;
         this.email = email;
         this.password = password;
         this.confirmPassword = confirmPassword;
@@ -35,12 +35,12 @@ public class CreateUserDto {
         this.firstname = firstname;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPseudo() {
+        return pseudo;
     }    
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 
     public String getEmail() {

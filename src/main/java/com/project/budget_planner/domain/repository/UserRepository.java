@@ -8,7 +8,7 @@ import com.project.budget_planner.domain.model.User;
 
 public interface UserRepository {
     Optional<User> findById(UUID id);
-    Optional<User> findByUsername(String username);
+    Optional<User> findByPseudo(String pseudo);
     Optional<User> findByEmail(String email);
     List<User> findAll();
     User save(User user);

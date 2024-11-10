@@ -53,8 +53,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUserByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Optional<User> getUserByPseudo(String pseudo) {
+        return userRepository.findByPseudo(pseudo);
     }
 
     public Optional<User> getUserByEmail(String email) {

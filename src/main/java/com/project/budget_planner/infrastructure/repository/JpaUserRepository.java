@@ -11,6 +11,6 @@ import com.project.budget_planner.domain.repository.UserRepository;
 
 @Repository
 public interface JpaUserRepository extends JpaRepository<User, UUID>, UserRepository {
-    Optional<User> findByUsername(String username);
+    Optional<User> findByPseudo(String pseudo);
     Optional<User> findByEmail(String email);
 }

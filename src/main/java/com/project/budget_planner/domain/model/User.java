@@ -27,7 +27,7 @@ public class User implements UserDetails {
     private String firstname;
     
     @Column(unique = true)
-    private String username;
+    private String pseudo;
     
     @Column(unique = true)
     private String email;
@@ -36,13 +36,18 @@ public class User implements UserDetails {
 
     public User() {}
 
-    public User(UUID id, String name, String firstname, String username, String email, String password) {
+    public User(UUID id, String name, String firstname, String pseudo, String email, String password) {
         this.id = id;
         this.name = name;
         this.firstname = firstname;
-        this.username = username;
+        this.pseudo = pseudo;
         this.email = email;
         this.password = password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
     }
 
     @Override
@@ -96,12 +101,12 @@ public class User implements UserDetails {
         this.firstname = firstname;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPseudo() {
+        return pseudo;
     }    
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
     }
 
     public String getEmail() {
