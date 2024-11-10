@@ -42,7 +42,7 @@ public class SecurityConfig {
     };
 
     private static final String[] PUBLIC_GET_APIS = {
-        "/users"
+        
     };
 
     private static final String[] PUBLIC_PUT_APIS = {
