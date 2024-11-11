@@ -39,9 +39,9 @@ public class UserController {
         return userApplicationService.getAllUsers();
     }
 
-    @GetMapping("/{pseudo}")
-    public Optional<UserDto> getUserByPseudo(@PathVariable String pseudo) {
-        return userApplicationService.getUserByPseudo(pseudo);
+    @GetMapping("/{id}")
+    public Optional<UserDto> getUserById(@PathVariable UUID id) {
+        return userApplicationService.getUserById(id);
     }
 
     @GetMapping("/current")
