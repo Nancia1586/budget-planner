@@ -57,6 +57,10 @@ public class UserService {
         return userRepository.findByPseudo(pseudo);
     }
 
+    public Optional<User> getUserById(UUID id) {
+        return userRepository.findById(id);
+    }
+
     public Optional<User> getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
