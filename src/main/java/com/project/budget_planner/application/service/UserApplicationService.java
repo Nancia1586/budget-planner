@@ -58,6 +58,12 @@ public class UserApplicationService {
                 user.getPseudo(), user.getEmail(), user.getPassword()));
     }
 
+    public Optional<UserDto> getUserById(UUID id) {
+        return userService.getUserById(id)
+            .map(user -> new UserDto(user.getId(), user.getName(), user.getFirstname(), 
+                user.getPseudo(), user.getEmail(), user.getPassword()));
+    }
+
     public void deleteUser(UUID id) {
         userService.deleteUser(id);
     }
