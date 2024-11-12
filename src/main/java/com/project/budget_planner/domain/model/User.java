@@ -2,12 +2,12 @@ package com.project.budget_planner.domain.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,8 +19,9 @@ import jakarta.persistence.Column;
 @Table(name = "users")
 public class User implements UserDetails {
     @Id
-    @GeneratedValue()
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
+    private Long id;
     
     private String name;
     
@@ -36,7 +37,7 @@ public class User implements UserDetails {
 
     public User() {}
 
-    public User(UUID id, String name, String firstname, String pseudo, String email, String password) {
+    public User(Long id, String name, String firstname, String pseudo, String email, String password) {
         this.id = id;
         this.name = name;
         this.firstname = firstname;
@@ -77,11 +78,11 @@ public class User implements UserDetails {
     }
 
     // Getters and Setters
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

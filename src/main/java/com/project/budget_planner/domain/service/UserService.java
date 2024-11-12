@@ -2,7 +2,6 @@ package com.project.budget_planner.domain.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import com.project.budget_planner.domain.model.User;
 import com.project.budget_planner.domain.repository.UserRepository;
@@ -42,7 +41,7 @@ public class UserService {
             .orElseThrow(() -> new IllegalArgumentException("Email or password is incorrect"));
     }
 
-    public void updatePassword(UUID userId, String newPassword) {
+    public void updatePassword(Long userId, String newPassword) {
         User user = userRepository.findById(userId)
             .orElseThrow(() -> new RuntimeException("User not found"));
         user.changePassword(newPassword);
@@ -57,7 +56,7 @@ public class UserService {
         return userRepository.findByPseudo(pseudo);
     }
 
-    public Optional<User> getUserById(UUID id) {
+    public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);
     }
 
@@ -65,7 +64,7 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public void deleteUser(UUID id) {
+    public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
 }

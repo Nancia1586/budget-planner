@@ -2,8 +2,6 @@ package com.project.budget_planner.infrastructure.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -40,7 +38,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public Optional<UserDto> getUserById(@PathVariable UUID id) {
+    public Optional<UserDto> getUserById(@PathVariable Long id) {
         return userApplicationService.getUserById(id);
     }
 
@@ -66,7 +64,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable UUID id) {
+    public void deleteUser(@PathVariable Long id) {
         userApplicationService.deleteUser(id);
     }
 }

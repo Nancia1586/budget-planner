@@ -1,9 +1,7 @@
 package com.project.budget_planner.application.dto.user;
 
-import java.util.UUID;
-
 public class UserDto {
-    private UUID id;
+    private Long id;
     private String name;
     private String firstname;
     private String pseudo;
@@ -12,7 +10,7 @@ public class UserDto {
 
     public UserDto() {}
 
-    public UserDto(UUID id, String name, String firstname, String pseudo, String email, String password) {
+    public UserDto(Long id, String name, String firstname, String pseudo, String email, String password) {
         this.id = id;
         this.name = name;
         this.firstname = firstname;
@@ -21,11 +19,11 @@ public class UserDto {
         this.password = password;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

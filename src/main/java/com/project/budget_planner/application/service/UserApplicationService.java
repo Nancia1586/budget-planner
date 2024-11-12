@@ -2,7 +2,6 @@ package com.project.budget_planner.application.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -58,13 +57,13 @@ public class UserApplicationService {
                 user.getPseudo(), user.getEmail(), user.getPassword()));
     }
 
-    public Optional<UserDto> getUserById(UUID id) {
+    public Optional<UserDto> getUserById(Long id) {
         return userService.getUserById(id)
             .map(user -> new UserDto(user.getId(), user.getName(), user.getFirstname(), 
                 user.getPseudo(), user.getEmail(), user.getPassword()));
     }
 
-    public void deleteUser(UUID id) {
+    public void deleteUser(Long id) {
         userService.deleteUser(id);
     }
 }
