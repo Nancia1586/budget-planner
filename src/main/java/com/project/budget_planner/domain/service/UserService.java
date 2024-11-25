@@ -23,7 +23,7 @@ public class UserService {
         this.authenticationManager = authenticationManager;
     }
 
-    public User creatUser(User user) {
+    public User createUser(User user) {
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
         return userRepository.save(user);

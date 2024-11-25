@@ -16,6 +16,17 @@ import com.project.budget_planner.domain.service.UserService;
 public class UserApplicationService {
     private final UserService userService;
 
+    private UserDto toUserDto(User user) {
+        return new UserDto(
+            user.getId(), 
+            user.getName(), 
+            user.getFirstname(), 
+            user.getPseudo(), 
+            user.getEmail(), 
+            user.getPassword()
+        );
+    }
+
     public UserApplicationService(UserService userService) {
         this.userService = userService;
     }
@@ -32,10 +43,8 @@ public class UserApplicationService {
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
 
-        User createdUser = userService.creatUser(user);
-        return new UserDto(createdUser.getId(), createdUser.getName(), 
-            createdUser.getFirstname(), createdUser.getPseudo(), createdUser.getEmail(), 
-            createdUser.getPassword());
+        User createdUser = userService.createUser(user);
+        return toUserDto(createdUser);
     }
 
     public User signin(LoginUserDto loginInfo) {
@@ -46,21 +55,18 @@ public class UserApplicationService {
 
     public List<UserDto> getAllUsers() {
         return userService.getAllUsers().stream()
-            .map(user -> new UserDto(user.getId(), user.getName(), user.getFirstname(), 
-                user.getPseudo(), user.getEmail(), user.getPassword()))
+            .map(this::toUserDto)
             .collect(Collectors.toList());
     }
 
     public Optional<UserDto> getUserByPseudo(String username) {
         return userService.getUserByPseudo(username)
-            .map(user -> new UserDto(user.getId(), user.getName(), user.getFirstname(), 
-                user.getPseudo(), user.getEmail(), user.getPassword()));
+            .map(this::toUserDto);
     }
 
     public Optional<UserDto> getUserById(Long id) {
         return userService.getUserById(id)
-            .map(user -> new UserDto(user.getId(), user.getName(), user.getFirstname(), 
-                user.getPseudo(), user.getEmail(), user.getPassword()));
+            .map(this::toUserDto);
     }
 
     public void deleteUser(Long id) {
