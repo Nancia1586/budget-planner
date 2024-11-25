@@ -49,6 +49,10 @@ public class SecurityConfig {
         
     };
 
+    private static final String[] PUBLIC_PATCH_APIS = {
+        
+    };
+
     private static final String[] PUBLIC_DELETE_APIS = {
         
     };
@@ -63,6 +67,7 @@ public class SecurityConfig {
             .requestMatchers(HttpMethod.POST, PUBLIC_POST_APIS).permitAll() // POST api autorisés
             .requestMatchers(HttpMethod.GET, PUBLIC_GET_APIS).permitAll()  // GET api autorisés
             .requestMatchers(HttpMethod.PUT, PUBLIC_PUT_APIS).permitAll()  // PUT api autorisés
+            .requestMatchers(HttpMethod.PATCH, PUBLIC_PATCH_APIS).permitAll()  // PATCH api autorisés
             .requestMatchers(HttpMethod.DELETE, PUBLIC_DELETE_APIS).permitAll()  // DELETE api autorisés
             .anyRequest().authenticated() // Les autres nécessitent une authentification
         )
