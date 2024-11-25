@@ -48,15 +48,14 @@ public class Transaction {
     private LocalDate endDate;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.ACTIVE;
 
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    private LocalDateTime updatedAt = LocalDateTime.now();
 
     @Nullable
-    private LocalDateTime updatedAt;
-
-    @Nullable
-    private LocalDateTime deletedAt;
+    private LocalDateTime deletedAt = null;
     
     public Transaction() {}
 
@@ -98,12 +97,12 @@ public class Transaction {
         this.id = id;
     }
 
-    public User getUserId() {
+    public User getUser() {
         return this.user;
     }
 
-    public void setUserId(User userId) {
-        this.user = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDesignation() {
